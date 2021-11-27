@@ -4,7 +4,9 @@ const initialState = {
     refresh: '',
     isLoading: false,
     login: '',
-    authErr: false
+    authErr: false,
+    db: [],
+    item: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -29,10 +31,25 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isAuth: action.payload
             }
-            case 'SET_IS_LOADING':
+
+        case 'SET_IS_LOADING':
             return {
                 ...state,
                 isLoading: action.payload
+            }
+
+        case 'SET_DB':
+            return {
+                ...state,
+                db: action.payload,
+                isLoading: false
+            }
+
+        case 'SET_ITEM':
+            return {
+                ...state,
+                item: action.payload,
+                isLoading: false
             }
 
         default:

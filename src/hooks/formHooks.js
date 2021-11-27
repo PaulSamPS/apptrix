@@ -13,9 +13,12 @@ const useValidation = (value, validations) => {
                     break
                 case 'isEmpty':
                     value ? setEmpty(false) : setEmpty(true)
+                    break
+                default:
+                    return validation
             }
         }
-    },[value])
+    },[validations, value])
 
     useEffect(() => {
         if (isEmpty || minLengthError) {
@@ -41,7 +44,7 @@ export const useInput = (initialValue,validations) => {
         setValue(e.target.value)
     }
 
-    const onBlur = (e) => {
+    const onBlur = () => {
         setDirty(true)
     }
 

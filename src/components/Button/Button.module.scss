@@ -1,0 +1,18 @@
+.btn {
+	display: inline-block;
+
+	box-sizing: border-box;
+	padding: 5px 20px;
+
+	cursor: pointer;
+	transition: all ease 0.2s;
+
+	color: white;
+	border: 0;
+	border-radius: 10px;
+	background-color: #0880AE;
+
+	&:hover {
+		background-color: #1A8CB9;
+	}
+}

@@ -1,22 +1,25 @@
-import styles from './Auth.module.scss'
-import {useEffect} from "react";
-import {checkAuth, login} from "../../redux/actions/authAction";
+import {checkAuth,login} from "../../redux/actions/authAction";
 import {Spinner} from "../Spinner/Spinner";
 import {useDispatch, useSelector} from "react-redux";
-import cn from 'classnames'
 import {useInput} from "../../hooks/formHooks";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import cn from 'classnames'
+import styles from './Auth.module.scss'
 
 export const Auth = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector(state => state.auth.isLoading)
     const authErr = useSelector(state => state.auth.authErr)
+    const isAuth = useSelector(state => state.auth.isAuth)
 
     const name = useInput('', {isEmpty: true, minLength: 3})
     const password = useInput('',{isEmpty: true, minLength: 5})
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(checkAuth())
-    }, [])
+    },[])
 
     const submitHandler = (e) => {
         if (!name.formValid || !password.formValid) {
@@ -28,7 +31,11 @@ export const Auth = () => {
     }
 
     if (isLoading) {
-        return <Spinner/>
+        return <Spinner />
+    }
+
+    if (isAuth) {
+        navigate('/panel')
     }
 
     return (

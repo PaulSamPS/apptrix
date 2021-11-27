@@ -1,0 +1,35 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 20px 0;
+
+	h3 {
+		margin: 0;
+	}
+}
+
+.title {
+	display: grid;
+
+	color: #C7C5C5;
+	border: 1px solid #C7C5C5;
+	grid-template-columns: repeat(4, 1fr);
+
+	span {
+		padding: 10px;
+
+		border-right: 1px solid #C7C5C5;
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+
+	color: black;
+}

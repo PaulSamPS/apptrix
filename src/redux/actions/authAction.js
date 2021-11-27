@@ -1,14 +1,15 @@
 import {Dispatch} from "react";
-import $api, {API_URL_AUTH} from "../../http";
-import {setAuth, setIsLoading, setRefreshToken, setToken, unAuth} from "./actions";
+import $api, {API_URL_AUTH} from "../../http/apiAuth";
+import {setAuth, setDb, setIsLoading, setItem, setRefreshToken, setToken, unAuth} from "./actions";
 import axios from "axios";
+import $apiDb from "../../http/apiUsers";
 
 export const login = (name, password) => {
-    return (dispatch: Dispatch) => {
+    return async (dispatch: Dispatch) => {
         const bodyFormData = new FormData()
         bodyFormData.append('username', name);
         bodyFormData.append('password', password);
-        $api.post('/token/',bodyFormData).then((res) => {
+        await $api.post('/token/',bodyFormData).then((res) => {
             localStorage.setItem("AccessToken", 'Bearer ' + res.data.access);
             localStorage.setItem("RefreshToken",res.data.refresh);
             dispatch(setToken(res.data.access));
@@ -36,15 +37,13 @@ export const logout = () => {
 }
 
 export const checkAuth = () => {
-    return (dispatch: Dispatch) => {
-        dispatch(setIsLoading(true))
+    return async (dispatch: Dispatch) => {
         const bodyFormData = new FormData()
         bodyFormData.append('refresh', localStorage.getItem("RefreshToken"));
-        axios.post(`${API_URL_AUTH}/token/refresh/`,bodyFormData).then((res) => {
+        await axios.post(`${API_URL_AUTH}/token/refresh/`,bodyFormData).then((res) => {
             localStorage.setItem("AccessToken", 'Bearer ' + res.data.access);
             dispatch(setToken(res.data.access));
             dispatch(setAuth(true));
-            dispatch(setIsLoading(false))
         }).catch(e => {
             localStorage.removeItem("AccessToken");
             localStorage.removeItem("RefreshToken");
@@ -52,7 +51,25 @@ export const checkAuth = () => {
             dispatch(setToken(''));
             dispatch(setRefreshToken(''));
             dispatch(setAuth(false));
-            dispatch(setIsLoading(false))
         })
     }
 }
+
+export const getDb = () => {
+    return (dispatch: Dispatch) => {
+        dispatch(setIsLoading(true))
+        $apiDb.get('/users/?fields=id,login,name,email').then((res) => {
+            dispatch(setDb(res.data))
+        })
+    }
+}
+
+export const getItem = (userId) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setIsLoading(true))
+        $apiDb.get(`/users/${userId}?fields=id,login,name,email`).then((res) => {
+            dispatch(setItem(res.data))
+        })
+    }
+}
+

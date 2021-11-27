@@ -1,116 +1,134 @@
 .wrapper {
-  position: relative;
-  -webkit-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
-  box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
-  width: 500px;
-  height: 150px;
-  padding: 30px;
-  border-radius: 10px;
-  margin: calc(50vh - 100px) auto;
-  display: grid;
-  grid-template-columns: 1fr 120px;
-  gap: 20px;
-  grid-template-areas:
-          "login login"
-          "password password"
-          ". btn";
+	position: relative;
 
-  input {
-    border: 1px solid #e5e5e5;
-    border-radius: 10px;
-    outline: none;
-    padding: 10px 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    -webkit-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.1);
-    -moz-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.1);
-    box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.1);
-    color: #756F86;
+	display: grid;
 
-    &::placeholder {
-      color: #e5e5e5;
-    }
-  }
+	width: 500px;
+	height: 150px;
+	margin: calc(50vh - 100px) auto;
+	padding: 30px;
 
-  .login {
-    grid-area: login;
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    align-items: center;
-    position: relative;
+	border-radius: 10px;
+	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
+	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
+	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
+	grid-template-columns: 1fr 120px;
+	gap: 20px;
+	grid-template-areas:
+		"login login"
+		"password password"
+		". btn";
 
-    label {
-      color: #756F86;
-      font-weight: 700;
-    }
+	input {
+		padding: 10px 20px;
 
-    .errLogin {
-      color: #da5d5d;
-      position: absolute;
-      top: -18px;
-      left: 82px;
-      font-size: 13px;
-    }
-  }
+		color: #756F86;
+		border: 1px solid #E5E5E5;
+		border-radius: 10px;
+		outline: none;
+		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
 
-  .password {
-    grid-area: password;
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    align-items: center;
-    position: relative;
+		font-family: "Roboto", sans-serif;
+		font-size: 16px;
 
-    label {
-      color: #756F86;
-      font-weight: 700;
-    }
+		&::placeholder {
+			color: #E5E5E5;
+		}
+	}
 
+	.login {
+		position: relative;
 
-    .errPassword {
-      color: #da5d5d;
-      position: absolute;
-      top: -18px;
-      left: 82px;
-      font-size: 13px;
-    }
-  }
+		display: grid;
+		align-items: center;
+		grid-area: login;
+		grid-template-columns: 80px 1fr;
 
-  .errAuth {
-    color: #da5d5d;
-    position: absolute;
-    bottom: 60px;
-    left: 110px;
-    font-size: 13px;
-  }
+		label {
+			color: #756F86;
 
-  .btn {
-    grid-area: btn;
-    display: inline-block;
-    box-sizing: border-box;
-    height: 35px;
-    width: 120px;
-    border: 0;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    color: #c7c5c5;
-    background: #e5e5e5;
+			font-weight: 700;
+		}
 
-    -webkit-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.1);
-    -moz-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.1);
-    box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.1);
+		.errLogin {
+			position: absolute;
+			top: -18px;
+			left: 82px;
 
-    &Active {
-      color: #e5e5e5;
-      background: #0880AE;
-      transition: all ease .2s;
+			color: #DA5D5D;
 
-      &:hover {
-        background: #1a8cb9;
-        color: white;
-      }
-    }
-  }
+			font-size: 13px;
+		}
+	}
+
+	.password {
+		position: relative;
+
+		display: grid;
+		align-items: center;
+		grid-area: password;
+		grid-template-columns: 80px 1fr;
+
+		label {
+			color: #756F86;
+
+			font-weight: 700;
+		}
+
+		.errPassword {
+			position: absolute;
+			top: -18px;
+			left: 82px;
+
+			color: #DA5D5D;
+
+			font-size: 13px;
+		}
+	}
+
+	.errAuth {
+		position: absolute;
+		bottom: 60px;
+		left: 110px;
+
+		color: #DA5D5D;
+
+		font-size: 13px;
+	}
+
+	.btn {
+		display: inline-block;
+
+		box-sizing: border-box;
+		width: 120px;
+		height: 35px;
+
+		cursor: pointer;
+
+		color: #C7C5C5;
+		border: 0;
+		border-radius: 10px;
+		background: #E5E5E5;
+		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+
+		font-size: 16px;
+		font-weight: 700;
+		grid-area: btn;
+
+		&Active {
+			transition: all ease 0.2s;
+
+			color: #E5E5E5;
+			background: #0880AE;
+
+			&:hover {
+				color: white;
+				background: #1A8CB9;
+			}
+		}
+	}
 }

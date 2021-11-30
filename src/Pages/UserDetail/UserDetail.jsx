@@ -15,7 +15,7 @@ export const UserDetail = () => {
 
     useEffect(() => {
         dispatch(getUser(userId))
-    },[userId])
+    },[])
 
     if (isLoading) {
         return <Spinner />

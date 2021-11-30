@@ -9,6 +9,8 @@ import {Button} from "./components/Button/Button";
 import {NotFound} from "./Pages/NotFound/NotFound";
 import PrivateRoute from "./helpers/requireAuth";
 import styles from "./App.module.scss";
+import {WorkItemsList} from "./Pages/WorkItemsList/WorkItemsList";
+import {WorkItem} from "./Pages/WorkItem/WorkItem";
 
 const App = () => {
     const dispatch = useDispatch()
@@ -34,6 +36,8 @@ const App = () => {
                 <Route path='/users' element={<PrivateRoute component={UserList}/>}/>
                 <Route path='/user/:userId' element={<PrivateRoute component={UserDetail}/>}/>
                 <Route path='/projects' element={<PrivateRoute component={ProjectList}/>}/>
+                <Route path='/project/:projectId' element={<PrivateRoute component={WorkItemsList}/>}/>
+                <Route path='/project/:projectId/:timesheet' element={<PrivateRoute component={WorkItem}/>}/>
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
             </BrowserRouter>

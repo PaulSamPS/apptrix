@@ -1,11 +1,14 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
 import {getProjects} from "../../redux/actions/projectAction";
+import {Link} from "react-router-dom";
+import {Spinner} from "../../components/Spinner/Spinner";
 import styles from './ProjectList.module.scss'
 
 export const ProjectList = () => {
     const dispatch = useDispatch()
     const tasks = useSelector(state => state.auth.projects)
+    const isLoading = useSelector(state => state.auth.isLoading)
     const [search,setSearch] = useState('')
     const [isOpen,setIsOpen] = useState(false)
     const autocompleteRef = useRef(null)
@@ -16,10 +19,10 @@ export const ProjectList = () => {
 
     useEffect(() => {
         document.body.addEventListener('click', handleOutsideClick)
-    }, [isOpen])
+    }, [isOpen,search])
 
     const filteredTasks = tasks.filter(tasks => {
-        return search.length >= 3 ? tasks.project.name.toLowerCase().includes(search.toLowerCase()) : tasks
+        return search ? tasks.project.name.toLowerCase().includes(search.toLowerCase()) : tasks.project.name
     })
 
     const itemClickHandler = (e) => {
@@ -42,7 +45,6 @@ export const ProjectList = () => {
         <div className={styles.wrapper}>
             <form className={styles.searchForm} onSubmit={(e) => e.preventDefault()} ref={autocompleteRef}>
                 <input
-                    autoFocus
                     type="text"
                     placeholder='Поиск...'
                     onChange={e => setSearch(e.target.value)}
@@ -65,10 +67,13 @@ export const ProjectList = () => {
                 <span>Задача</span>
                 <span>Компания</span>
             </div>
-            {filteredTasks.map(t =>
+            {isLoading ? <Spinner/> : filteredTasks <= 0 ? <h1 className={styles.notFound}>Ничего не найдено</h1> :
+                filteredTasks.map(t =>
                 <div key={t.id} className={styles.table}>
                     <span>{t.id}</span>
-                    <span className={styles.summary}>{t.summary}</span>
+                    <Link to={`/project/${t.id}`}>
+                        <span>{t.summary}</span>
+                    </Link>
                     <span>{t.project.name}</span>
                 </div>
             )}

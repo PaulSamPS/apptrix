@@ -7,6 +7,7 @@
 	height: 150px;
 	margin: calc(50vh - 100px) auto;
 	padding: 30px;
+
 	border: 1px solid #E5E5E5;
 
 	border-radius: 10px;
@@ -44,7 +45,7 @@
 		grid-template-columns: 80px 1fr;
 
 		label {
-			color: #756f86;
+			color: #756F86;
 
 			font-weight: 700;
 		}
@@ -115,14 +116,14 @@
 		grid-area: btn;
 
 		&Active {
-			transition: all cubic-bezier(1,0,0,1) .3s;
+			transition: all cubic-bezier(1, 0, 0, 1) 0.3s;
 
 			color: white;
-			background: #756f86;
+			background: #756F86;
 
 			&:hover {
 				color: white;
-				background: #81798f;
+				background: #81798F;
 			}
 		}
 	}

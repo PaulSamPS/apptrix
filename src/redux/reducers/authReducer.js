@@ -1,10 +1,12 @@
 import {
-    SET_AUTH,
-    SET_IS_LOADING, SET_NAV_VISIBLE, SET_PROJECTS,
-    SET_REFRESH_TOKEN,
-    SET_TOKEN,
-    SET_UNAUTHORIZED, SET_USER,
-    SET_USERS
+    SET_IS_LOADING,
+    SET_NAV_VISIBLE,
+    SET_PROJECTS,
+    SET_UNAUTHORIZED,
+    SET_USER,
+    SET_USERS,
+    SET_WORK_ITEM,
+    SET_WORK_ITEMS
 } from "../constants/constants";
 
 const initialState = {
@@ -13,7 +15,9 @@ const initialState = {
     users: [],
     user: [],
     projects: [],
-    navVisible: false
+    navVisible: false,
+    workItems: [],
+    workItem: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -59,6 +63,22 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 navVisible: false
+            }
+
+        case SET_WORK_ITEMS:
+            return {
+                ...state,
+                workItems: action.payload,
+                navVisible: true,
+                isLoading: false
+            }
+
+        case SET_WORK_ITEM:
+            return {
+                ...state,
+                workItem: action.payload,
+                navVisible: true,
+                isLoading: false
             }
 
         default:

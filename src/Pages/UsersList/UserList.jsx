@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CardUser} from "../../components/CardItem/CardUser";
+import {CardUser} from "../../components/CardUser/CardUser";
 import {Spinner} from "../../components/Spinner/Spinner";
 import {Link} from "react-router-dom";
 import {getUsers} from "../../redux/actions/usersAction";
@@ -15,10 +15,6 @@ export const UserList = () => {
         dispatch(getUsers())
     },[])
 
-    if (isLoading) {
-       return <Spinner />
-    }
-
     return (
         <>
             <div className={styles.title}>Пользователи</div>
@@ -28,7 +24,8 @@ export const UserList = () => {
                 <span>email</span>
                 <span>login</span>
             </div>
-            {data.map(d =>
+            {isLoading ? <Spinner/> :
+                data.map(d =>
                 <Link key={d.id} to={`/user/${d.id}`}>
                     <CardUser
                         id={d.id}

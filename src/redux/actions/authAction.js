@@ -5,7 +5,6 @@ import {
     unAuth
 } from "./actions";
 import axios from "axios";
-import {SET_AUTH, SET_REFRESH_TOKEN, SET_TOKEN} from "../constants/constants";
 
 export const login = (name, password) => {
     return async (dispatch: Dispatch) => {
@@ -30,7 +29,6 @@ export const logout = () => {
         localStorage.removeItem("AccessToken");
         localStorage.removeItem("RefreshToken");
         dispatch(setNavVisible(false))
-        dispatch(setAuth(false))
     }
 }
 
@@ -50,6 +48,4 @@ export const checkAuth = () => {
         }
 }
 
-export const setToken = (token) => ({type: SET_TOKEN, payload: token})
-export const setAuth = (auth) => ({type: SET_AUTH, payload: auth})
 

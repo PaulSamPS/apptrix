@@ -8,15 +8,17 @@
 
 .header {
 	display: flex;
-	gap: 10px;
 	align-items: center;
+
 	margin: 0;
-	border: 1px solid #C7C5C5;
 	padding: 10px;
+
 	color: white;
-	background-color: #756f86;
+	border: 1px solid #C7C5C5;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	background-color: #756F86;
+	gap: 10px;
 
 	h4 {
 		margin: 0;
@@ -30,7 +32,7 @@
 	margin-bottom: 30px;
 
 	p {
-		color: #756f86;
+		color: #756F86;
 	}
 
 	.block {

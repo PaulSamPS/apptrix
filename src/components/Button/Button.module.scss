@@ -5,7 +5,7 @@
 	padding: 7px 20px;
 
 	cursor: pointer;
-	transition: all cubic-bezier(1,0,0,1) .3s;
+	transition: all cubic-bezier(1, 0, 0, 1) 0.3s;
 
 	color: white;
 	border: 0;
@@ -13,6 +13,6 @@
 	background-color: #756F86;
 
 	&:hover {
-		background-color: #81798f;
+		background-color: #81798F;
 	}
 }

@@ -8,19 +8,20 @@
 
 .title {
 	margin: 0;
-	border: 1px solid #756F86;
 	padding: 10px;
+
 	color: white;
-	background-color: #756F86;
+	border: 1px solid #756F86;
 
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	background-color: #756F86;
 }
 
 .tableName {
 	display: grid;
 
-	color: #756f86;
+	color: #756F86;
 	border: 1px solid #C7C5C5;
 	grid-template-columns: repeat(4, 1fr);
 

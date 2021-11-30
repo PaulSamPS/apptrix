@@ -2,7 +2,9 @@
 	display: grid;
 	grid-template-columns: 1fr auto;
 	justify-items: center;
+
 	align-items: center;
+
 	padding: 20px 0;
 
 	li {
@@ -13,8 +15,9 @@
 		display: flex;
 
 		a {
-			color: #756f86;
 			margin-right: 10px;
+
+			color: #756F86;
 
 			&:last-child {
 				margin-right: 0;
@@ -23,8 +26,10 @@
 
 		.activeLink {
 			padding-bottom: 5px;
+
+			border-bottom: 1px solid #756F86;
+
 			font-weight: 700;
-			border-bottom: 1px solid #756f86;
 		}
 
 		.users {

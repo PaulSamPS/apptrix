@@ -1,55 +1,64 @@
+import {
+    SET_AUTH,
+    SET_IS_LOADING, SET_NAV_VISIBLE, SET_PROJECTS,
+    SET_REFRESH_TOKEN,
+    SET_TOKEN,
+    SET_UNAUTHORIZED, SET_USER,
+    SET_USERS
+} from "../constants/constants";
+
 const initialState = {
-    token: '',
-    isAuth: false,
-    refresh: '',
     isLoading: false,
-    login: '',
     authErr: false,
-    db: [],
-    item: []
+    users: [],
+    user: [],
+    projects: [],
+    navVisible: false
 }
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_TOKEN':
-            return {
-                ...state,
-                token: action.payload
-            }
-            case 'SET_UNAUTHORIZED':
+        case SET_UNAUTHORIZED:
             return {
                 ...state,
                 authErr: action.payload
             }
-        case 'SET_REFRESH_TOKEN':
-            return {
-                ...state,
-                refresh: action.payload
-            }
-        case 'SET_AUTH':
-            return {
-                ...state,
-                isAuth: action.payload
-            }
 
-        case 'SET_IS_LOADING':
+        case SET_IS_LOADING:
             return {
                 ...state,
                 isLoading: action.payload
             }
 
-        case 'SET_DB':
+        case SET_USERS:
             return {
                 ...state,
-                db: action.payload,
+                users: action.payload,
+                navVisible: true,
+                isLoading: false,
+                authErr: false
+            }
+
+        case SET_USER:
+            return {
+                ...state,
+                user: action.payload,
+                navVisible: true,
                 isLoading: false
             }
 
-        case 'SET_ITEM':
+        case SET_PROJECTS:
             return {
                 ...state,
-                item: action.payload,
+                projects: action.payload,
+                navVisible: true,
                 isLoading: false
+            }
+
+        case SET_NAV_VISIBLE:
+            return {
+                ...state,
+                navVisible: false
             }
 
         default:

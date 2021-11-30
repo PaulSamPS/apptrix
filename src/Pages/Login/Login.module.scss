@@ -7,11 +7,10 @@
 	height: 150px;
 	margin: calc(50vh - 100px) auto;
 	padding: 30px;
+	border: 1px solid #E5E5E5;
 
 	border-radius: 10px;
-	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
-	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
-	box-shadow: 0 0 8px 0 rgb(34 60 80 / 20%);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
 	grid-template-columns: 1fr 120px;
 	gap: 20px;
 	grid-template-areas:
@@ -24,11 +23,9 @@
 
 		color: #756F86;
 		border: 1px solid #E5E5E5;
-		border-radius: 10px;
+		border-radius: 5px;
 		outline: none;
-		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
-		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
-		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
 
 		font-family: "Roboto", sans-serif;
 		font-size: 16px;
@@ -47,7 +44,7 @@
 		grid-template-columns: 80px 1fr;
 
 		label {
-			color: #756F86;
+			color: #756f86;
 
 			font-weight: 700;
 		}
@@ -109,25 +106,23 @@
 
 		color: #C7C5C5;
 		border: 0;
-		border-radius: 10px;
+		border-radius: 5px;
 		background: #E5E5E5;
-		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
-		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
-		box-shadow: 0 0 8px 0 rgb(34 60 80 / 10%);
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
 
 		font-size: 16px;
 		font-weight: 700;
 		grid-area: btn;
 
 		&Active {
-			transition: all ease 0.2s;
+			transition: all cubic-bezier(1,0,0,1) .3s;
 
-			color: #E5E5E5;
-			background: #0880AE;
+			color: white;
+			background: #756f86;
 
 			&:hover {
 				color: white;
-				background: #1A8CB9;
+				background: #81798f;
 			}
 		}
 	}

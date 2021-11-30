@@ -1,7 +1,5 @@
-export const unAuth = (auth) => ({type: 'SET_UNAUTHORIZED', payload: auth})
-export const setToken = (token) => ({type: 'SET_TOKEN', payload: token})
-export const setRefreshToken = (token) => ({type: 'SET_REFRESH_TOKEN', payload: token})
-export const setAuth = (auth) => ({type: 'SET_AUTH', payload: auth})
-export const setIsLoading = (loading) => ({type: 'SET_IS_LOADING', payload: loading})
-export const setDb = (data) => ({type: 'SET_DB', payload: data})
-export const setItem = (userId) => ({type: 'SET_ITEM', payload: userId})
+import {SET_IS_LOADING, SET_NAV_VISIBLE, SET_UNAUTHORIZED} from "../constants/constants";
+
+export const setIsLoading = (loading) => ({type: SET_IS_LOADING, payload: loading})
+export const setNavVisible = (visible) => ({type: SET_NAV_VISIBLE, payload: visible})
+export const unAuth = (auth) => ({type: SET_UNAUTHORIZED, payload: auth})

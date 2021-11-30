@@ -2,17 +2,17 @@
 	display: inline-block;
 
 	box-sizing: border-box;
-	padding: 5px 20px;
+	padding: 7px 20px;
 
 	cursor: pointer;
-	transition: all ease 0.2s;
+	transition: all cubic-bezier(1,0,0,1) .3s;
 
 	color: white;
 	border: 0;
-	border-radius: 10px;
-	background-color: #0880AE;
+	border-radius: 5px;
+	background-color: #756F86;
 
 	&:hover {
-		background-color: #1A8CB9;
+		background-color: #81798f;
 	}
 }

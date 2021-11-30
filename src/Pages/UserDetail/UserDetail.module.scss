@@ -1,14 +1,24 @@
-.header {
-	display: grid;
-	align-items: center;
-
+.title {
 	padding: 20px 0;
 
-	border-bottom: 1px solid #E5E5E5;
-	grid-template-columns: auto 1fr auto;
-	gap: 20px;
+	h2 {
+		margin: 0;
+	}
+}
 
-	h3 {
+.header {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	margin: 0;
+	border: 1px solid #C7C5C5;
+	padding: 10px;
+	color: white;
+	background-color: #756f86;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+
+	h4 {
 		margin: 0;
 	}
 }
@@ -20,7 +30,7 @@
 	margin-bottom: 30px;
 
 	p {
-		color: #C7C5C5;
+		color: #756f86;
 	}
 
 	.block {

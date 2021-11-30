@@ -1,39 +1,34 @@
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {Spinner} from "../Spinner/Spinner";
-import {checkAuth, getItem, logout} from "../../redux/actions/authAction";
-import {Button} from "../Button/Button";
+import {Spinner} from "../../components/Spinner/Spinner";
+import {Button} from "../../components/Button/Button";
+import {getUser} from "../../redux/actions/usersAction";
 import styles from './UserDetail.module.scss'
 
 export const UserDetail = () => {
     const {userId} = useParams()
     const dispatch = useDispatch()
-    const item = useSelector(state => state.auth.item)
+    const item = useSelector(state => state.auth.user)
     const isLoading = useSelector(state => state.auth.isLoading)
-    const isAuth = useSelector(state => state.auth.isAuth)
-    const navigate = useNavigate()
     const {id,email,$type,name,login} = item
 
     useEffect(() => {
-        dispatch(checkAuth())
-        dispatch(getItem(userId))
+        dispatch(getUser(userId))
     },[userId])
 
     if (isLoading) {
         return <Spinner />
     }
 
-    if (!isAuth) {
-        navigate('/')
-    }
-
     return (
         <>
+            <div className={styles.title}>
+                <h2>Подробная карточка</h2>
+            </div>
             <div className={styles.header}>
-                <span>Информация о пользователе: </span>
-                <h3>{login}</h3>
-                <Button onClick={() => dispatch(logout())}>Выйти</Button>
+                <span>Информация о пользователе : </span>
+                <h4>{login}</h4>
             </div>
             <div className={styles.grid}>
                 <div className={styles.block}>
@@ -51,7 +46,7 @@ export const UserDetail = () => {
                     <span>{$type}</span>
                 </div>
             </div>
-            <Link to={'/panel'}>
+            <Link to={'/users'}>
                 <Button>Назад</Button>
             </Link>
         </>

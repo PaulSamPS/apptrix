@@ -6,6 +6,11 @@
 	border: 1px solid #C7C5C5;
 	border-top: 0;
 	grid-template-columns: repeat(4, 1fr);
+	transition: all cubic-bezier(1,0,0,1) .3s;
+
+	&:hover {
+		color: #8169b4;
+	}
 
 	span {
 		padding: 10px;

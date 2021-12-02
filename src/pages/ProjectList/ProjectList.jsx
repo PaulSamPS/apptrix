@@ -15,7 +15,7 @@ export const ProjectList = () => {
 
     useEffect(() => {
         dispatch(getProjects())
-    },[])
+    },[dispatch])
 
     useEffect(() => {
         document.body.addEventListener('click', handleOutsideClick)

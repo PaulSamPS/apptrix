@@ -14,7 +14,7 @@ export const WorkItemsList = () => {
 
     useEffect(() => {
         dispatch(getWorkItems(projectId))
-    },[])
+    },[dispatch,projectId])
 
     return (
         <div className={styles.wrapper}>

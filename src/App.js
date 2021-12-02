@@ -1,20 +1,21 @@
-import {Login} from "./Pages/Login/Login";
-import {UserList} from "./Pages/UsersList/UserList";
+import {Login} from "./pages/Login/Login";
+import {UserList} from "./pages/UsersList/UserList";
 import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
-import {UserDetail} from "./Pages/UserDetail/UserDetail";
-import {ProjectList} from "./Pages/ProjectList/ProjectList";
+import {UserDetail} from "./pages/UserDetail/UserDetail";
+import {ProjectList} from "./pages/ProjectList/ProjectList";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "./redux/actions/authAction";
 import {Button} from "./components/Button/Button";
-import {NotFound} from "./Pages/NotFound/NotFound";
+import {NotFound} from "./pages/NotFound/NotFound";
 import PrivateRoute from "./helpers/requireAuth";
+import {WorkItemsList} from "./pages/WorkItemsList/WorkItemsList";
+import {WorkItem} from "./pages/WorkItem/WorkItem";
 import styles from "./App.module.scss";
-import {WorkItemsList} from "./Pages/WorkItemsList/WorkItemsList";
-import {WorkItem} from "./Pages/WorkItem/WorkItem";
 
 const App = () => {
     const dispatch = useDispatch()
     const navVisible = useSelector(state => state.auth.navVisible)
+    const isAuth = localStorage.getItem("AccessToken")
 
     return (
             <BrowserRouter>
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path='/projects' element={<PrivateRoute component={ProjectList}/>}/>
                 <Route path='/project/:projectId' element={<PrivateRoute component={WorkItemsList}/>}/>
                 <Route path='/project/:projectId/:timesheet' element={<PrivateRoute component={WorkItem}/>}/>
+                {/*<Route path='/project/:projectId/:timesheet' element={<PDFDownloadLink document={<WorkItem/>} fileName="somename.pdf"/>}/>*/}
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
             </BrowserRouter>

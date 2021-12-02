@@ -1,10 +1,12 @@
-import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {PDFDownloadLink} from "@react-pdf/renderer";
+import {WorkItemCardPDF} from "../../components/WorkItemCardPDF/WorkItemCardPDF";
 import {useEffect} from "react";
 import {getWorkItem} from "../../redux/actions/projectAction";
+import {Link, useParams} from "react-router-dom";
 import {Button} from "../../components/Button/Button";
 import {Spinner} from "../../components/Spinner/Spinner";
-import styles from './WorkItem.module.scss'
+import styles from "./WorkItem.module.scss";
 
 export const WorkItem = () => {
     const {projectId,timesheet} = useParams()
@@ -14,7 +16,11 @@ export const WorkItem = () => {
 
     useEffect(() => {
         dispatch(getWorkItem(projectId,timesheet))
-    },[])
+    },[dispatch,projectId,timesheet])
+
+    if (isLoading) {
+        return <Spinner/>
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -29,10 +35,20 @@ export const WorkItem = () => {
                     <span>{items.duration?.presentation}</span>
                 </div>
             }
-
-            <Link to={`/project/${projectId}`}>
-                <Button>Назад</Button>
-            </Link>
+            <div className={styles.blockButtons}>
+                <Link to={`/project/${projectId}`}>
+                    <Button className={styles.btn}>Назад</Button>
+                </Link>
+                <PDFDownloadLink
+                    document={<WorkItemCardPDF author={items.author?.name} duration={items.duration?.presentation}/>}
+                    fileName="workItem.pdf"
+                >
+                    {({loading}) =>
+                        loading ? "Загрузка..." : <Button>Скачать</Button>
+                    }
+                </PDFDownloadLink>
+            </div>
         </div>
     )
 }
+

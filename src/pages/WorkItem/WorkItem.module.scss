@@ -47,9 +47,14 @@
 				border-right: 0;
 			}
 		}
+	}
 
-		.btn {
-			margin-left: 10px;
-		}
+	.btn {
+		margin-right: 30px;
+	}
+
+	.blockButtons {
+		display: flex;
+		align-items: center;
 	}
 }

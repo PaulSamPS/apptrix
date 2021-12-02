@@ -18,6 +18,10 @@ export const Login = () => {
     const password = useInput('',{isEmpty: true, minLength: 5})
     const isAuth = localStorage.getItem("AccessToken")
 
+    useEffect(() => {
+        isAuth && navigate('/users', {replace: true})
+    },[isAuth,navigate])
+
     const submitHandler = (e) => {
         if (!name.formValid || !password.formValid) {
             e.preventDefault()
@@ -25,10 +29,6 @@ export const Login = () => {
             dispatch(login(name.value,password.value))
         }
     }
-
-    useEffect(() => {
-        isAuth && navigate('/users', {replace: true})
-    },[submitHandler])
 
     if (isLoading) {
         return <Spinner/>

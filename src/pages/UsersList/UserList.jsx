@@ -13,7 +13,7 @@ export const UserList = () => {
 
     useEffect(() => {
         dispatch(getUsers())
-    },[])
+    },[dispatch])
 
     return (
         <>
